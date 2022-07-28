@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/aerim-yi/cypress-testing#readme",
   "devDependencies": {
+    "@types/jquery": "^3.5.14",
     "cypress": "^10.3.0",
     "dotenv": "^16.0.1"
   },
