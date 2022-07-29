@@ -22,7 +22,7 @@ describe('Star Store', () => {
         })
     })
 
-    it('should match the star store url after clicking the star store dropdown menu', () => {
+    it('should navigate to star store page when access via the navbar', () => {
         cy.visit('/')
         cy.get('cerberus-navbar-main-menu-item gu-simple-text').contains('market').click()
         cy.get('cerberus-navbar-main-menu-sub-item li').contains('star store').click()
@@ -35,7 +35,7 @@ describe('Star Store', () => {
         cy.get('.emptyStateSection gu-heading-text').contains('the Star Store is Restocking')
     })
 
-    it('has the same data as the mock card data', () => {
+    it('should show purchase menu when the buy button is clicked - use mock data', () => {
         cy.fixture('starStore.json').then((payload) => {
             const startTimeStamp = moment().toISOString();
             const endTimeStamp = moment().add(1, 'd').toISOString();
@@ -44,27 +44,27 @@ describe('Star Store', () => {
                 data["end_timestamp"] = endTimeStamp
             })
 
-            cy.intercept('GET', 'https://game-legacy.ludia.nonprod.godsunchained.com/user/209022/shop', payload).as('getActivities');
+            cy.intercept('GET', 'https://game-legacy.ludia.nonprod.godsunchained.com/user/209022/shop', payload);
         })
         cy.visit('/star-store');
-        cy.wait('@getActivities').then((interception) => {
-            console.log('interception', interception)
-        })
-
+        cy.get('.storeSection__specials__item').shadow().find('.middleSection__cta').eq(0).click()
     })
 
-    // count cards
-    
-    // check out card info
 
-    // buy button
+    it('should show insuffucent fund menu when the buy button is clicked - use mock data', () => {
+        cy.fixture('starStore.json').then((payload) => {
+            const startTimeStamp = moment().toISOString();
+            const endTimeStamp = moment().add(1, 'd').toISOString();
+            payload.forEach(data => {
+                data["start_timestamp"] = startTimeStamp
+                data["end_timestamp"] = endTimeStamp
+            })
 
-    // if no balance, say no balance, can't buy card
-
-    // with balance, can buy card
-
-    // cancel button
-
-
-
+            cy.intercept('GET', 'https://game-legacy.ludia.nonprod.godsunchained.com/user/209022/shop', payload);
+        })
+        cy.visit('/star-store');
+        cy.get('.storeSection__specials__item').shadow().find('.middleSection__cta').eq(1).click()
+        cy.get('cerberus-modal-window').find('.ctaSection__primary').click()
+        cy.get('.cerberusModal__content gu-heading-text').contains('NOT ENOUGH STARS!')
+    })
 })
