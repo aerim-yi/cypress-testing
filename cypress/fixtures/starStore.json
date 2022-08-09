@@ -1,0 +1,22 @@
+[
+    {
+        "label": "Daily",
+        "title": "Daily Deal",
+        "item_name": "Affordable!",
+        "image_url": "https://card.godsunchained.com/?id=1176\u0026q=5\u0026png=true\u0026w=512",
+        "item_description": "Best deal!",
+        "asset_group": "shop-Neutral-AmazonSpearsoul-Plain",
+        "value": 1,
+        "currency": "stars"
+    },
+    {
+        "label": "Daily",
+        "title": "Welcome Deal",
+        "item_name": "Not Affordable!",
+        "image_url": "https://card.godsunchained.com/?id=87061\u0026q=4\u0026png=true\u0026w=512",
+        "item_description": "Expensive!",
+        "asset_group": "shop-Death-RebuildDifferently-Meteorite",
+        "value": 100000000000,
+        "currency": "stars"
+    }
+]

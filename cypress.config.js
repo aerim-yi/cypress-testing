@@ -5,7 +5,6 @@ module.exports = defineConfig({
   viewportHeight: 1080,
   viewportWidth: 1920,
   chromeWebSecurity: false,
-
   e2e: {
     baseUrl: 'https://master-dev.website.godsunchained.com/',
     specPattern: 'cypress/e2e/**/*.{js,jsx,ts,tsx}',
